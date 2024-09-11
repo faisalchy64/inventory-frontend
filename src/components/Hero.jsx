@@ -3,7 +3,7 @@ import hero from "../assets/hero.jpg";
 
 export default function Hero() {
   return (
-    <header className="w-4/5 flex flex-col-reverse md:flex-row justify-between items-center gap-5 pt-10 mx-auto">
+    <header className="w-4/5 min-h-[500px] flex flex-col-reverse md:flex-row justify-between items-center gap-5 py-10 mx-auto">
       <div className="w-full">
         <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">
           Streamline Your Inventory, Boost Your Business
