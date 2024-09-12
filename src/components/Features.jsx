@@ -23,9 +23,8 @@ export default function Features() {
           }}
           transition={{
             duration: 0.5,
-            delay: 0.5,
+            delay: 0.2,
           }}
-          viewport={{ once: true }}
         >
           <img src={time} alt="Feature image" className="size-10" />
           <h3 className="text-xl font-semibold text-gray-900">
@@ -50,9 +49,8 @@ export default function Features() {
           }}
           transition={{
             duration: 0.5,
-            delay: 1,
+            delay: 0.4,
           }}
-          viewport={{ once: true }}
         >
           <img src={management} alt="Feature image" className="size-10" />
           <h3 className="text-xl font-semibold text-gray-900">
@@ -77,9 +75,8 @@ export default function Features() {
           }}
           transition={{
             duration: 0.5,
-            delay: 1.5,
+            delay: 0.6,
           }}
-          viewport={{ once: true }}
         >
           <img src={order} alt="Feature image" className="size-10" />
           <h3 className="text-xl font-semibold text-gray-900">
@@ -104,9 +101,8 @@ export default function Features() {
           }}
           transition={{
             duration: 0.5,
-            delay: 2,
+            delay: 0.8,
           }}
-          viewport={{ once: true }}
         >
           <img src={analysis} alt="Feature image" className="size-10" />
           <h3 className="text-xl font-semibold text-gray-900">

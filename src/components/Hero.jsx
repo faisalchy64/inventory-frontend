@@ -16,7 +16,7 @@ export default function Hero() {
 
         <Link
           to="/signin"
-          className="inline-block text-white bg-gray-900 px-5 py-3.5 rounded-3xl transition-shadow duration-300 hover:shadow"
+          className="inline-block text-white bg-gray-900 hover:bg-gray-800 px-5 py-3.5 rounded-3xl"
         >
           Start for free
         </Link>

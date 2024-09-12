@@ -53,13 +53,13 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-1.5">
           <Link
             to="/signin"
-            className="bg-gray-200 px-3.5 py-2 rounded-3xl transition-shadow duration-300 hover:shadow"
+            className="text-gray-900 bg-gray-200 hover:bg-gray-300 px-3.5 py-2 rounded-3xl "
           >
             Signin
           </Link>
           <Link
             to="/signup"
-            className="text-white bg-gray-900 px-3.5 py-2 rounded-3xl transition-shadow duration-300 hover:shadow"
+            className="text-white bg-gray-900 hover:bg-gray-700 px-3.5 py-2 rounded-3xl "
           >
             Signup
           </Link>
@@ -123,13 +123,13 @@ export default function Navbar() {
             <li className="flex items-center gap-1.5">
               <Link
                 to="/signin"
-                className="bg-gray-200 px-3.5 py-2 rounded-3xl transition-shadow duration-300 hover:shadow"
+                className="text-gray-900 bg-gray-200 hover:bg-gray-300 px-3.5 py-2 rounded-3xl "
               >
                 Signin
               </Link>
               <Link
                 to="/signup"
-                className="text-white bg-gray-900 px-3.5 py-2 rounded-3xl transition-shadow duration-300 hover:shadow"
+                className="text-white bg-gray-900 hover:bg-gray-700 px-3.5 py-2 rounded-3xl "
               >
                 Signup
               </Link>
