@@ -3,6 +3,7 @@ import Features from "../components/Features";
 import Container from "../components/Container";
 import Pricing from "../components/Pricing";
 import Testimonial from "../components/Testimonial";
+import CallToAction from "../components/CallToAction";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Container />
       <Pricing />
       <Testimonial />
+      <CallToAction />
     </main>
   );
 }
