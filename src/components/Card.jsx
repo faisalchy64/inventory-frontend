@@ -5,7 +5,7 @@ export default function Card() {
     <article className="bg-gray-100 border rounded-md overflow-hidden">
       <div className="h-60">
         <img
-          src="https://images.pexels.com/photos/27835751/pexels-photo-27835751/free-photo-of-a-tree-with-green-apples-on-it.jpeg"
+          src="https://images.pexels.com/photos/27835751/pexels-photo-27835751/free-photo-of-a-tree-with-green-apples-on-it.jpeg?auto=compress&w=600"
           alt="Product image"
           className="w-full h-full object-cover"
         />

@@ -9,7 +9,7 @@ export default function Testimonial() {
           <div className="flex items-center gap-2.5">
             <div className="size-10 rounded-[100%] overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
+                src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&w=600"
                 alt="Person image"
                 className="w-full h-full object-cover"
               />
@@ -30,7 +30,7 @@ export default function Testimonial() {
           <div className="flex items-center gap-2.5">
             <div className="size-10 rounded-[100%] overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg"
+                src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&w=600"
                 alt="Person image"
                 className="w-full h-full object-cover"
               />
@@ -53,7 +53,7 @@ export default function Testimonial() {
           <div className="flex items-center gap-2.5">
             <div className="size-10 rounded-[100%] overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg"
+                src="https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&w=600"
                 alt="Person image"
                 className="w-full h-full object-cover"
               />
@@ -76,7 +76,7 @@ export default function Testimonial() {
           <div className="flex items-center gap-2.5">
             <div className="size-10 rounded-[100%] overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg"
+                src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&w=600"
                 alt="Person image"
                 className="w-full h-full object-cover"
               />
@@ -99,7 +99,7 @@ export default function Testimonial() {
           <div className="flex items-center gap-2.5">
             <div className="size-10 rounded-[100%] overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg"
+                src="https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&w=600"
                 alt="Person image"
                 className="w-full h-full object-cover"
               />
@@ -122,7 +122,7 @@ export default function Testimonial() {
           <div className="flex items-center gap-2.5">
             <div className="size-10 rounded-[100%] overflow-hidden">
               <img
-                src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg"
+                src="https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&w=600"
                 alt="Person image"
                 className="w-full h-full object-cover"
               />

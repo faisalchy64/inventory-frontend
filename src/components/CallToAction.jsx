@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import vector from "../assets/vector.svg";
 
 export default function CallToAction() {
   return (
     <section className="w-4/5 min-h-[500px] flex items-center gap-3.5 py-10 mx-auto">
       <motion.div
+        style={{
+          background: `url(${vector})`,
+        }}
         className="flex flex-col gap-3.5 bg-gray-900 p-10 rounded-md"
         initial={{ opacity: 0, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
