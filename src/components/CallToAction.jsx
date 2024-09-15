@@ -10,9 +10,9 @@ export default function CallToAction() {
           background: `url(${vector})`,
         }}
         className="flex flex-col gap-3.5 bg-gray-900 p-10 rounded-md"
-        initial={{ opacity: 0, x: -100 }}
+        initial={{ opacity: 0, x: -500 }}
         whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 0.5 }}
       >
         <h1 className="text-2xl md:text-3xl font-semibold text-white">
           Take control of your inventory

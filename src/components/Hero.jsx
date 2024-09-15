@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <header className="w-4/5 min-h-[500px] flex flex-col-reverse md:flex-row justify-between items-center gap-5 py-10 mx-auto">
       <div className="w-full">
-        <h1 className="text-3xl md:text-4xl font-semibold text-gray-900">
+        <h1 className="text-3xl md:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#27B643] to-[#FFE70B]">
           Streamline Your Inventory, Boost Your Business
         </h1>
         <p className="text-gray-500 my-3.5">

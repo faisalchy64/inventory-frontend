@@ -105,7 +105,10 @@ export default function Navbar() {
             </button>
           </div>
 
-          <ul className="flex flex-col items-center gap-3.5 my-20">
+          <ul
+            className="flex flex-col items-center gap-3.5 my-20"
+            onClick={() => setShow(false)}
+          >
             {uris.map((uri) => (
               <li key={uri.id}>
                 <Link
