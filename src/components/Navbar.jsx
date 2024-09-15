@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Brand from "./Brand";
 
 const uris = [
   {
@@ -31,9 +32,7 @@ export default function Navbar() {
   return (
     <nav className="bg-white py-3.5 border-b">
       <div className="w-4/5 flex justify-between items-center mx-auto">
-        <Link to="/" className="text-3xl font-semibold text-gray-900">
-          Xventory
-        </Link>
+        <Brand />
 
         <ul className="hidden md:flex items-center gap-3.5">
           {uris.map((uri) => (

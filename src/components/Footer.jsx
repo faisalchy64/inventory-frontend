@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
+import Brand from "./Brand";
 
 export default function Footer() {
   return (
     <footer className="flex flex-col bg-gray-950">
       <div className="w-4/5 grid md:grid-cols-2 lg:grid-cols-4 lg:justify-items-center gap-3.5 py-20 mx-auto">
         <div className="flex flex-col gap-3.5">
-          <Link to="/" className="text-3xl font-semibold text-white">
-            Xventory
-          </Link>
+          <Brand />
           <p className="text-sm text-gray-500">
             Start today with a free trial and see how our platform can make
             inventory management easy and efficient for your business.
