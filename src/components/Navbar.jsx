@@ -23,6 +23,11 @@ const uris = [
     path: "/about",
     name: "About",
   },
+  {
+    id: 5,
+    path: "/contact",
+    name: "Contact",
+  },
 ];
 
 export default function Navbar() {
