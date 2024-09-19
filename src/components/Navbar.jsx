@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import useGlobal from "../hooks/useGlobal";
 import Brand from "./Brand";
 
 const uris = [
@@ -33,28 +34,47 @@ const uris = [
 export default function Navbar() {
   const [show, setShow] = useState(false);
   const { pathname } = useLocation();
+  const { open, setOpen } = useGlobal();
 
   return (
     <nav className="bg-white py-3.5 border-b">
       <div className="w-4/5 flex justify-between items-center mx-auto">
-        {pathname.includes("/dashboard") && (
-          <button className="md:hidden" onClick={() => setShow(true)}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
-              />
-            </svg>
-          </button>
-        )}
+        {pathname.includes("/dashboard") &&
+          (open ? (
+            <button onClick={() => setOpen(false)}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-7 text-gray-600"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                />
+              </svg>
+            </button>
+          ) : (
+            <button className="md:hidden" onClick={() => setOpen(true)}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-7"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
+                />
+              </svg>
+            </button>
+          ))}
 
         <Brand />
 
@@ -108,7 +128,7 @@ export default function Navbar() {
         <aside
           className={`md:hidden bg-gray-100 fixed inset-0 ${
             show ? "translate-x-0" : "translate-x-full"
-          } transition-transform duration-300`}
+          } transition-transform duration-300 z-50`}
         >
           <div className="flex justify-end p-5">
             <button onClick={() => setShow(false)}>
