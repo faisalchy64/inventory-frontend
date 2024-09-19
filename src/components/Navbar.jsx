@@ -37,6 +37,25 @@ export default function Navbar() {
   return (
     <nav className="bg-white py-3.5 border-b">
       <div className="w-4/5 flex justify-between items-center mx-auto">
+        {pathname.includes("/dashboard") && (
+          <button className="md:hidden" onClick={() => setShow(true)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
+              />
+            </svg>
+          </button>
+        )}
+
         <Brand />
 
         <ul className="hidden md:flex items-center gap-3.5">
