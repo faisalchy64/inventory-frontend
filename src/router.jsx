@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Root from "./pages/Root";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <h1>Dashboard Home</h1>,
+        element: <Root />,
       },
     ],
   },
