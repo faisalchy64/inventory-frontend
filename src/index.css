@@ -26,5 +26,5 @@ tr:nth-child(even) {
 
 th,
 td {
-  @apply px-3.5 py-2.5;
+  @apply text-nowrap px-3.5 py-2.5;
 }
