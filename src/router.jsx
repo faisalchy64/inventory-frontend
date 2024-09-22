@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Root from "./pages/Root";
 import ManageProducts from "./pages/ManageProducts";
 import ManageOrders from "./pages/ManageOrders";
+import CreateProduct from "./pages/CreateProduct";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/manage-orders",
         element: <ManageOrders />,
+      },
+      {
+        path: "/dashboard/create-product",
+        element: <CreateProduct />,
       },
     ],
   },
