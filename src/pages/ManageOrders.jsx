@@ -5,28 +5,43 @@ export default function ManageOrders() {
         Manage Orders
       </h1>
 
-      <div className="overflow-x-auto">
-        <table className="w-full table-auto font-semibold">
-          <thead className="text-justify text-white bg-gray-900">
-            <tr>
+      <div className="border rounded-md overflow-x-auto">
+        <table className="w-full table-auto">
+          <thead className="text-justify text-gray-900">
+            <tr className="*:px-3.5 *:py-2.5 border-b">
               <th>Customer</th>
-              <th>Product Name</th>
+              <th className="text-nowrap">Product Name</th>
               <th>Quantity</th>
               <th>Price</th>
               <th>Amount</th>
               <th>Status</th>
+              <th>Actions</th>
             </tr>
           </thead>
-          <tbody className="text-gray-600">
-            <tr className="">
+          <tbody className="text-justify text-gray-500">
+            <tr className="hover:bg-gray-50 *:px-3.5 *:py-2.5 border-b last:border-b-0">
               <td>0123456789</td>
               <td>Apple</td>
-              <td>20KG</td>
+              <td>20 KG</td>
               <td>$15</td>
               <td>$300</td>
-              <td className="flex gap-2.5">
-                <button className="text-xs text-blue-500 bg-blue-100 px-2.5 py-1.5 rounded-3xl">
-                  Pending
+              <td>Pending</td>
+              <td>
+                <button className="block">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="size-6 stroke-gray-500"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                    />
+                  </svg>
                 </button>
               </td>
             </tr>

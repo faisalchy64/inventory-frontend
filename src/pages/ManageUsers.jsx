@@ -1,8 +1,8 @@
-export default function ManageProducts() {
+export default function ManageUsers() {
   return (
     <section className="min-h-[500px] flex flex-col gap-10 p-4">
       <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
-        Manage Products
+        Manage Users
       </h1>
 
       <div className="border rounded-md overflow-x-auto">

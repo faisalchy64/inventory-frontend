@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useGlobal from "../hooks/useGlobal";
 
 export default function Sidebar() {
-  const [role] = useState("supplier");
+  const [role] = useState("admin");
   const { open } = useGlobal();
 
   return (

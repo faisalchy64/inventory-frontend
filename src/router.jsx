@@ -9,6 +9,7 @@ import Root from "./pages/Root";
 import ManageProducts from "./pages/ManageProducts";
 import ManageOrders from "./pages/ManageOrders";
 import CreateProduct from "./pages/CreateProduct";
+import ManageUsers from "./pages/ManageUsers";
 import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/create-product",
         element: <CreateProduct />,
+      },
+      {
+        path: "/dashboard/manage-users",
+        element: <ManageUsers />,
       },
       {
         path: "/dashboard/profile",
