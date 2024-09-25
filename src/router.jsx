@@ -3,6 +3,7 @@ import Main from "./layout/Main";
 import Dashboard from "./layout/Dashboard";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
+import Product from "./pages/Product";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Root from "./pages/Root";
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
+      },
+      {
+        path: "/products/:id",
+        element: <Product />,
       },
       {
         path: "/about",

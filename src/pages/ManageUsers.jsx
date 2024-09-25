@@ -10,16 +10,18 @@ export default function ManageUsers() {
           <thead className="text-justify text-gray-900">
             <tr className="*:px-3.5 *:py-2.5 border-b">
               <th>Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Verified</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody className="text-justify text-gray-500">
             <tr className="hover:bg-gray-50 *:px-3.5 *:py-2.5 border-b last:border-b-0">
-              <td>Apple</td>
-              <td>100 KG</td>
-              <td>$15</td>
+              <td>Abc</td>
+              <td>abc@abc.com</td>
+              <td>Supplier</td>
+              <td>True</td>
               <td className="flex gap-2.5">
                 <button>
                   <svg
