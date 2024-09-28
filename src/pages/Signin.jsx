@@ -33,7 +33,8 @@ export default function Signin() {
             <input
               type="email"
               id="email"
-              placeholder="Your email"
+              placeholder="Enter your email"
+              autoComplete="off"
               className="px-2.5 py-1.5 border outline-none rounded-md"
               {...register("email", {
                 required: {
@@ -59,7 +60,7 @@ export default function Signin() {
               <input
                 type={show ? "text" : "password"}
                 id="password"
-                placeholder="Your password"
+                placeholder="Enter your password"
                 className="w-full px-2.5 py-1.5 border outline-none rounded-md"
                 {...register("password", {
                   required: {
@@ -82,7 +83,7 @@ export default function Signin() {
             )}
           </div>
 
-          <div className="w-fit flex flex-col gap-0.5 text-xs text-blue-700">
+          <div className="flex justify-between items-center gap-1.5 text-xs text-blue-700">
             <Link to="/signup">Create an account</Link>
             <Link to="/reset-password">Forgot password</Link>
           </div>

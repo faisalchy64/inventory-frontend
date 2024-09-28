@@ -11,6 +11,7 @@ export default function Signup() {
     handleSubmit,
     reset,
   } = useForm();
+  
   const onSubmit = async (data) => {
     console.log(data);
 
@@ -32,7 +33,8 @@ export default function Signup() {
             <input
               type="text"
               id="name"
-              placeholder="Your name"
+              placeholder="Enter your name"
+              autoComplete="off"
               className="px-2.5 py-1.5 border outline-none rounded-md"
               {...register("name", {
                 required: {
@@ -57,7 +59,8 @@ export default function Signup() {
             <input
               type="email"
               id="email"
-              placeholder="Your email"
+              placeholder="Enter your email"
+              autoComplete="off"
               className="px-2.5 py-1.5 border outline-none rounded-md"
               {...register("email", {
                 required: {
@@ -82,7 +85,8 @@ export default function Signup() {
             <div className="relative">
               <input
                 type={show ? "text" : "password"}
-                placeholder="Your password"
+                id="password"
+                placeholder="Enter your password"
                 className="w-full px-2.5 py-1.5 border outline-none rounded-md"
                 {...register("password", {
                   required: {
@@ -123,7 +127,7 @@ export default function Signup() {
                 },
               })}
             >
-              <option value="">Select user role</option>
+              <option value="">Select your role</option>
               <option value="user">USER</option>
               <option value="supplier">SUPPLIER</option>
             </select>
