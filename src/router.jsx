@@ -14,6 +14,7 @@ import ManageOrders from "./pages/ManageOrders";
 import CreateProduct from "./pages/CreateProduct";
 import ManageUsers from "./pages/ManageUsers";
 import Profile from "./pages/Profile";
+import AuthRoute from "./components/AuthRoute";
 
 const router = createBrowserRouter([
   {
@@ -52,31 +53,37 @@ const router = createBrowserRouter([
   },
   {
     path: "",
-    element: <Dashboard />,
+    element: <AuthRoute />,
     children: [
       {
-        path: "/dashboard",
-        element: <Root />,
-      },
-      {
-        path: "/dashboard/manage-products",
-        element: <ManageProducts />,
-      },
-      {
-        path: "/dashboard/manage-orders",
-        element: <ManageOrders />,
-      },
-      {
-        path: "/dashboard/create-product",
-        element: <CreateProduct />,
-      },
-      {
-        path: "/dashboard/manage-users",
-        element: <ManageUsers />,
-      },
-      {
-        path: "/dashboard/profile",
-        element: <Profile />,
+        path: "",
+        element: <Dashboard />,
+        children: [
+          {
+            path: "/dashboard",
+            element: <Root />,
+          },
+          {
+            path: "/dashboard/manage-products",
+            element: <ManageProducts />,
+          },
+          {
+            path: "/dashboard/manage-orders",
+            element: <ManageOrders />,
+          },
+          {
+            path: "/dashboard/create-product",
+            element: <CreateProduct />,
+          },
+          {
+            path: "/dashboard/manage-users",
+            element: <ManageUsers />,
+          },
+          {
+            path: "/dashboard/profile",
+            element: <Profile />,
+          },
+        ],
       },
     ],
   },

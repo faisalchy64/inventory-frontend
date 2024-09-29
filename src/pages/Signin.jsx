@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useGlobal from "../hooks/useGlobal";
@@ -7,7 +7,10 @@ import useGlobal from "../hooks/useGlobal";
 export default function Signin() {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const { setAuth } = useGlobal();
+  const from = (location.state && location.state.from.pathname) || "/";
 
   const {
     register,
@@ -21,6 +24,7 @@ export default function Signin() {
       setLoading(true);
       const res = await fetch(`${import.meta.env.VITE_API_ORIGIN}/signin`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
@@ -28,12 +32,13 @@ export default function Signin() {
       });
       const data = await res.json();
 
-      if (data.status === 404) {
+      if (data.status === 404 || data.status === 401) {
         throw new Error(data.message);
       }
 
       localStorage.setItem("auth", JSON.stringify(data));
       setAuth({ ...data });
+      navigate(from, { replace: true });
     } catch (error) {
       toast.error(error.message);
     }
