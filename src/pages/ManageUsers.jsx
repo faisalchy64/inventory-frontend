@@ -1,6 +1,6 @@
 export default function ManageUsers() {
   return (
-    <section className="min-h-[500px] flex flex-col gap-10 p-4">
+    <section className="w-full h-full flex flex-col gap-10 p-4 overflow-y-auto">
       <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
         Manage Users
       </h1>

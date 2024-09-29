@@ -14,7 +14,7 @@ export default function CreateProduct() {
   };
 
   return (
-    <section className="md:h-[calc(100vh-68.8px)] flex flex-col p-4 overflow-y-scroll">
+    <section className="w-full h-full flex flex-col p-4 overflow-y-auto">
       <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
         Create Product
       </h1>

@@ -6,11 +6,9 @@ export default function Dashboard() {
   return (
     <>
       <Navbar />
-      <main className="flex relative">
+      <main className="h-[calc(100vh-64.8px)] md:h-[calc(100vh-68.8px)] flex relative">
         <Sidebar />
-        <div className="w-full h-[calc(100vh-64.8px)] md:h-[calc(100vh-68.8px)]">
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
     </>
   );
