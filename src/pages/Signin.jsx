@@ -32,6 +32,7 @@ export default function Signin() {
         throw new Error(data.message);
       }
 
+      localStorage.setItem("auth", JSON.stringify(data));
       setAuth({ ...data });
     } catch (error) {
       toast.error(error.message);
