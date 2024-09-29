@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import useGlobal from "../hooks/useGlobal";
 
 export default function Signin() {
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { setAuth } = useGlobal();
 
   const {
     register,
@@ -12,10 +16,29 @@ export default function Signin() {
     reset,
   } = useForm();
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = async (payload) => {
+    try {
+      setLoading(true);
+      const res = await fetch(`${import.meta.env.VITE_API_ORIGIN}/signin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (data.status === 404) {
+        throw new Error(data.message);
+      }
+
+      setAuth({ ...data });
+    } catch (error) {
+      toast.error(error.message);
+    }
 
     reset();
+    setLoading(false);
   };
 
   return (
@@ -90,9 +113,10 @@ export default function Signin() {
 
           <button
             type="submit"
+            disabled={loading}
             className="font-semibold text-white bg-gray-900 hover:bg-gray-800 px-2.5 py-1.5 rounded-md"
           >
-            Submit
+            {loading ? "Loading..." : "Submit"}
           </button>
         </form>
       </div>
