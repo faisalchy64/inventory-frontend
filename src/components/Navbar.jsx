@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
 import useGlobal from "../hooks/useGlobal";
 import Brand from "./Brand";
 
@@ -34,14 +35,32 @@ const uris = [
 export default function Navbar() {
   const [show, setShow] = useState(false);
   const { pathname } = useLocation();
-  const { open, setOpen } = useGlobal();
+  const { open, auth, setOpen, setAuth } = useGlobal();
+
+  const signout = async () => {
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_ORIGIN}/signout`, {
+        credentials: "include",
+      });
+      const data = await res.json();
+
+      if (data.status === 401) {
+        throw new Error(data.message);
+      }
+
+      localStorage.removeItem("auth");
+      setAuth(null);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <nav className="bg-white py-3.5 border-b">
       <div className="w-4/5 flex justify-between items-center mx-auto">
         {pathname.includes("/dashboard") &&
           (open ? (
-            <button onClick={() => setOpen(false)}>
+            <button className="md:hidden" onClick={() => setOpen(false)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -79,33 +98,69 @@ export default function Navbar() {
         <Brand />
 
         <ul className="hidden md:flex items-center gap-3.5">
-          {uris.map((uri) => (
-            <li key={uri.id}>
-              <Link
-                to={uri.path}
-                className={`text-gray-500 ${
-                  pathname === uri.path && "font-semibold text-gray-900"
-                }`}
-              >
-                {uri.name}
-              </Link>
-            </li>
-          ))}
+          {uris.map((uri) => {
+            if (uri.path === "/dashboard") {
+              if (auth) {
+                return (
+                  <li key={uri.id}>
+                    <Link
+                      to={uri.path}
+                      className={`text-gray-500 ${
+                        pathname === uri.path && "font-semibold text-gray-900"
+                      }`}
+                    >
+                      {uri.name}
+                    </Link>
+                  </li>
+                );
+              }
+
+              return null;
+            }
+
+            return (
+              <li key={uri.id}>
+                <Link
+                  to={uri.path}
+                  className={`text-gray-500 ${
+                    pathname === uri.path && "font-semibold text-gray-900"
+                  }`}
+                >
+                  {uri.name}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="hidden md:flex items-center gap-1.5">
-          <Link
-            to="/signin"
-            className="text-gray-900 bg-gray-200 hover:bg-gray-300 px-3.5 py-2 rounded-3xl "
-          >
-            Signin
-          </Link>
-          <Link
-            to="/signup"
-            className="text-white bg-gray-900 hover:bg-gray-700 px-3.5 py-2 rounded-3xl "
-          >
-            Signup
-          </Link>
+          {auth ? (
+            <>
+              <h3 className="uppercase text-gray-500">{auth.name}</h3>
+              <h3 className="uppercase text-gray-400">|</h3>
+              <button
+                className="text-white bg-gray-900 hover:bg-gray-700 px-3.5 py-2 rounded-3xl "
+                onClick={signout}
+              >
+                Signout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/signin"
+                className="text-gray-900 bg-gray-200 hover:bg-gray-300 px-3.5 py-2 rounded-3xl "
+              >
+                Signin
+              </Link>
+              <Link
+                to="/signup"
+                className="text-white bg-gray-900 hover:bg-gray-800 px-3.5 py-2 rounded-3xl "
+              >
+                Signup
+              </Link>
+            </>
+          )}
         </div>
 
         <button className="md:hidden" onClick={() => setShow(true)}>
@@ -153,32 +208,68 @@ export default function Navbar() {
             className="flex flex-col items-center gap-3.5 my-20"
             onClick={() => setShow(false)}
           >
-            {uris.map((uri) => (
-              <li key={uri.id}>
-                <Link
-                  to={uri.path}
-                  className={`text-2xl font-semibold text-gray-500 ${
-                    pathname === uri.path && "font-bold text-gray-900"
-                  }`}
-                >
-                  {uri.name}
-                </Link>
-              </li>
-            ))}
+            {uris.map((uri) => {
+              if (uri.path === "/dashboard") {
+                if (auth) {
+                  return (
+                    <li key={uri.id}>
+                      <Link
+                        to={uri.path}
+                        className={`text-2xl font-semibold text-gray-500 ${
+                          pathname === uri.path && "font-bold text-gray-900"
+                        }`}
+                      >
+                        {uri.name}
+                      </Link>
+                    </li>
+                  );
+                }
+
+                return null;
+              }
+
+              return (
+                <li key={uri.id}>
+                  <Link
+                    to={uri.path}
+                    className={`text-2xl font-semibold text-gray-500 ${
+                      pathname === uri.path && "font-bold text-gray-900"
+                    }`}
+                  >
+                    {uri.name}
+                  </Link>
+                </li>
+              );
+            })}
 
             <li className="flex items-center gap-1.5">
-              <Link
-                to="/signin"
-                className="text-gray-900 bg-gray-200 hover:bg-gray-300 px-3.5 py-2 rounded-3xl "
-              >
-                Signin
-              </Link>
-              <Link
-                to="/signup"
-                className="text-white bg-gray-900 hover:bg-gray-700 px-3.5 py-2 rounded-3xl "
-              >
-                Signup
-              </Link>
+              {auth ? (
+                <>
+                  <h3 className="uppercase text-gray-500">{auth.name}</h3>
+                  <h3 className="uppercase text-gray-400">|</h3>
+                  <button
+                    className="text-white bg-gray-900 hover:bg-gray-700 px-3.5 py-2 rounded-3xl "
+                    onClick={signout}
+                  >
+                    Signout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/signin"
+                    className="text-gray-900 bg-gray-200 hover:bg-gray-300 px-3.5 py-2 rounded-3xl "
+                  >
+                    Signin
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="text-white bg-gray-900 hover:bg-gray-800 px-3.5 py-2 rounded-3xl "
+                  >
+                    Signup
+                  </Link>
+                </>
+              )}
             </li>
           </ul>
         </aside>
