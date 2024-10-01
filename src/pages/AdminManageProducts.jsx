@@ -1,8 +1,8 @@
-export default function ManageUsers() {
+export default function AdminManageProducts() {
   return (
     <section className="w-full h-full flex flex-col gap-10 p-4 overflow-y-auto">
       <h1 className="text-2xl md:text-3xl font-semibold text-gray-900">
-        Manage Users
+        Manage Products
       </h1>
 
       <div className="border rounded-md overflow-x-auto">
@@ -10,18 +10,16 @@ export default function ManageUsers() {
           <thead className="text-justify text-gray-900">
             <tr className="*:px-3.5 *:py-2.5 border-b">
               <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Verified</th>
+              <th>Quantity</th>
+              <th>Price</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody className="text-justify text-gray-500">
             <tr className="hover:bg-gray-50 *:px-3.5 *:py-2.5 border-b last:border-b-0">
-              <td>Abc</td>
-              <td>abc@abc.com</td>
-              <td>Supplier</td>
-              <td>True</td>
+              <td>Apple</td>
+              <td>100 KG</td>
+              <td>$15</td>
               <td className="flex gap-2.5">
                 <button>
                   <svg

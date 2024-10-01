@@ -97,7 +97,7 @@ export default function Sidebar() {
     admin: [
       {
         id: 1,
-        path: "/dashboard/manage-users",
+        path: "/dashboard/admin-manage-users",
         name: "Manage Users",
         icon: (
           <svg
@@ -118,7 +118,7 @@ export default function Sidebar() {
       },
       {
         id: 2,
-        path: "/dashboard/manage-products",
+        path: "/dashboard/admin-manage-products",
         name: "Manage Products",
         icon: (
           <svg
@@ -139,7 +139,7 @@ export default function Sidebar() {
       },
       {
         id: 3,
-        path: "/dashboard/manage-orders",
+        path: "/dashboard/admin-manage-orders",
         name: "Manage Orders",
         icon: (
           <svg

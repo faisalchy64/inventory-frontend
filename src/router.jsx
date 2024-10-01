@@ -12,7 +12,9 @@ import Root from "./pages/Root";
 import ManageProducts from "./pages/ManageProducts";
 import ManageOrders from "./pages/ManageOrders";
 import CreateProduct from "./pages/CreateProduct";
-import ManageUsers from "./pages/ManageUsers";
+import AdminManageUsers from "./pages/AdminManageUsers";
+import AdminManageProducts from "./pages/AdminManageProducts";
+import AdminManageOrders from "./pages/AdminManageOrders";
 import Profile from "./pages/Profile";
 import AuthRoute from "./components/AuthRoute";
 
@@ -76,8 +78,16 @@ const router = createBrowserRouter([
             element: <CreateProduct />,
           },
           {
-            path: "/dashboard/manage-users",
-            element: <ManageUsers />,
+            path: "/dashboard/admin-manage-users",
+            element: <AdminManageUsers />,
+          },
+          {
+            path: "/dashboard/admin-manage-products",
+            element: <AdminManageProducts />,
+          },
+          {
+            path: "/dashboard/admin-manage-orders",
+            element: <AdminManageOrders />,
           },
           {
             path: "/dashboard/profile",
