@@ -17,6 +17,8 @@ import AdminManageProducts from "./pages/AdminManageProducts";
 import AdminManageOrders from "./pages/AdminManageOrders";
 import Profile from "./pages/Profile";
 import AuthRoute from "./components/AuthRoute";
+import SupplierRoute from "./components/SupplierRoute";
+import AdminRoute from "./components/AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -66,28 +68,40 @@ const router = createBrowserRouter([
             element: <Root />,
           },
           {
-            path: "/dashboard/manage-products",
-            element: <ManageProducts />,
+            path: "",
+            element: <SupplierRoute />,
+            children: [
+              {
+                path: "/dashboard/manage-products",
+                element: <ManageProducts />,
+              },
+              {
+                path: "/dashboard/manage-orders",
+                element: <ManageOrders />,
+              },
+              {
+                path: "/dashboard/create-product",
+                element: <CreateProduct />,
+              },
+            ],
           },
           {
-            path: "/dashboard/manage-orders",
-            element: <ManageOrders />,
-          },
-          {
-            path: "/dashboard/create-product",
-            element: <CreateProduct />,
-          },
-          {
-            path: "/dashboard/admin-manage-users",
-            element: <AdminManageUsers />,
-          },
-          {
-            path: "/dashboard/admin-manage-products",
-            element: <AdminManageProducts />,
-          },
-          {
-            path: "/dashboard/admin-manage-orders",
-            element: <AdminManageOrders />,
+            path: "",
+            element: <AdminRoute />,
+            children: [
+              {
+                path: "/dashboard/admin-manage-users",
+                element: <AdminManageUsers />,
+              },
+              {
+                path: "/dashboard/admin-manage-products",
+                element: <AdminManageProducts />,
+              },
+              {
+                path: "/dashboard/admin-manage-orders",
+                element: <AdminManageOrders />,
+              },
+            ],
           },
           {
             path: "/dashboard/profile",
