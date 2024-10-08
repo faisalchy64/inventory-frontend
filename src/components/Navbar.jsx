@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import toast from "react-hot-toast";
 import useGlobal from "../hooks/useGlobal";
 import Brand from "./Brand";
+import useApiPrivate from "../hooks/useApiPrivate";
 
 const uris = [
   {
@@ -35,24 +35,18 @@ const uris = [
 export default function Navbar() {
   const [show, setShow] = useState(false);
   const { pathname } = useLocation();
+  const apiPrivate = useApiPrivate();
   const { open, auth, setOpen, setAuth } = useGlobal();
 
   const signout = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_ORIGIN}/signout`, {
-        credentials: "include",
-      });
-      const data = await res.json();
-
-      if (data.status === 401) {
-        throw new Error(data.message);
-      }
-
-      localStorage.removeItem("auth");
-      setAuth(null);
+      await apiPrivate.get("/signout");
     } catch (error) {
-      toast.error(error.message);
+      return error;
     }
+
+    localStorage.removeItem("auth");
+    setAuth(null);
   };
 
   return (
