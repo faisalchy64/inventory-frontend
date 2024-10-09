@@ -1,15 +1,46 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import useApiPrivate from "../hooks/useApiPrivate";
+import useGlobal from "../hooks/useGlobal";
 
 export default function CreateProduct() {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
+  const apiPrivate = useApiPrivate();
+  const { auth } = useGlobal();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    try {
+      setLoading(true);
+      const form = new FormData();
+
+      for (const key in data) {
+        if (key === "productImage") {
+          form.append(key, data[key][0]);
+          continue;
+        }
+
+        form.append(key, data[key]);
+      }
+
+      form.append("supplier", auth._id);
+
+      const res = await apiPrivate.post("/products", form);
+
+      if (res.status === 201) {
+        toast.success("Product created successfully.");
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+
+    setLoading(false);
     reset();
   };
 
@@ -31,6 +62,7 @@ export default function CreateProduct() {
           <input
             type="text"
             id="productName"
+            autoComplete="off"
             placeholder="Enter product name"
             className="px-2.5 py-1.5 border outline-none rounded-md"
             {...register("productName", {
@@ -66,7 +98,7 @@ export default function CreateProduct() {
                 message: "Description is required.",
               },
               pattern: {
-                value: /^[a-zA-Z\s.]{3,}$/,
+                value: /^(?!\s)([a-zA-Z0-9.,'"\-:;()&%$#!? ]{10,500})$/,
                 message: "Please enter a valid description.",
               },
             })}
@@ -213,9 +245,10 @@ export default function CreateProduct() {
 
         <button
           type="submit"
+          disabled={loading}
           className="font-semibold text-white bg-gray-900 hover:bg-gray-800 px-2.5 py-3 rounded-md"
         >
-          Submit
+          {loading ? "Loading..." : "Submit"}
         </button>
       </form>
     </section>
