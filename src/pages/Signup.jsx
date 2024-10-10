@@ -1,11 +1,17 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import api from "../api";
+import useGlobal from "../hooks/useGlobal";
 
 export default function Signup() {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  const { auth } = useGlobal();
+  const from = (state && state.from.pathname) || "/";
 
   const {
     register,
@@ -14,30 +20,25 @@ export default function Signup() {
     reset,
   } = useForm();
 
-  const onSubmit = async (payload) => {
+  const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await fetch(`${import.meta.env.VITE_API_ORIGIN}/signup`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json();
+      const res = await api.post("/signup", data);
 
-      if (data.status === 409) {
-        throw new Error(data.message);
-      }
-
-      toast.success(data.message);
+      toast.success(res.data.message);
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.message);
     }
 
     reset();
     setLoading(false);
   };
+
+  useEffect(() => {
+    if (auth) {
+      navigate(from, { replace: true });
+    }
+  }, [auth, from, navigate]);
 
   return (
     <section className="w-4/5 min-h-[calc(100vh-64.8px)] md:min-h-[calc(100vh-68.8px)] flex justify-center items-center mx-auto">

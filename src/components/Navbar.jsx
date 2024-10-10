@@ -42,7 +42,7 @@ export default function Navbar() {
     try {
       await apiPrivate.get("/signout");
     } catch (error) {
-      return error;
+      console.log(error);
     }
 
     localStorage.removeItem("auth");

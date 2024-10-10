@@ -9,5 +9,9 @@ export default function AuthRoute() {
     return <Outlet />;
   }
 
+  if (auth) {
+    return <Navigate to="/" />;
+  }
+
   return <Navigate to="/signin" state={{ from }} replace />;
 }

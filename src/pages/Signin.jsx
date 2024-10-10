@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useGlobal from "../hooks/useGlobal";
+import api from "../api";
 
 export default function Signin() {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  const location = useLocation();
+  const { state } = useLocation();
   const navigate = useNavigate();
-  const { setAuth } = useGlobal();
-  const from = (location.state && location.state.from.pathname) || "/";
+  const { auth, setAuth } = useGlobal();
+  const from = (state && state.from.pathname) || "/";
 
   const {
     register,
@@ -19,33 +20,26 @@ export default function Signin() {
     reset,
   } = useForm();
 
-  const onSubmit = async (payload) => {
+  const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const res = await fetch(`${import.meta.env.VITE_API_ORIGIN}/signin`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json();
+      const res = await api.post("/signin", data, { withCredentials: true });
 
-      if (data.status === 404 || data.status === 401) {
-        throw new Error(data.message);
-      }
-
-      localStorage.setItem("auth", JSON.stringify(data));
-      setAuth({ ...data });
-      navigate(from, { replace: true });
+      localStorage.setItem("auth", JSON.stringify(res.data));
+      setAuth({ ...res.data });
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.message);
     }
 
     reset();
     setLoading(false);
   };
+
+  useEffect(() => {
+    if (auth) {
+      navigate(from, { replace: true });
+    }
+  }, [auth, from, navigate]);
 
   return (
     <section className="w-4/5 min-h-[calc(100vh-64.8px)] md:min-h-[calc(100vh-68.8px)] flex justify-center items-center mx-auto">
