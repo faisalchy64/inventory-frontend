@@ -19,6 +19,7 @@ import Profile from "./pages/Profile";
 import AuthRoute from "./components/AuthRoute";
 import SupplierRoute from "./components/SupplierRoute";
 import AdminRoute from "./components/AdminRoute";
+import Verify from "./pages/Verify";
 
 const router = createBrowserRouter([
   {
@@ -110,6 +111,10 @@ const router = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: "/verify/:token",
+    element: <Verify />,
   },
 ]);
 
